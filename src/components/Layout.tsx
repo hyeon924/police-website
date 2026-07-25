@@ -11,7 +11,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <header className="header">
       <div className="header-inner">
         <Link to="/" className="brand"><img src={imageUrl('logo.png')} alt="대전경찰청" /></Link>
-        <div className="header-tools"><span>사이트맵</span></div>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="메뉴 열기" aria-expanded={menuOpen}><i></i><i></i><i></i></button>
       </div>
       <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label="주요 메뉴"><ul>
