@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes, Link } from 'react-router-dom'
 import { Layout } from './components/Layout'
-import { gallery, news, noticeTabs, partnerImages, quickLinks, quickServices } from './data/site'
+import { gallery, news, noticeTabs, partnerImages, quickLinks, quickServices, relatedSites, videos } from './data/site'
 import { imageUrl } from './lib/assets'
 
 const slides = ['slide1.jpg', 'slide2.jpg', 'slide3.jpg']
@@ -11,13 +11,11 @@ function HomePage() {
   const [activeTab, setActiveTab] = useState(0)
   useEffect(() => { const timer = window.setInterval(() => setSlide(value => (value + 1) % slides.length), 5000); return () => window.clearInterval(timer) }, [])
   return <>
-    <section className="hero" style={{ backgroundImage: `linear-gradient(90deg, rgba(8,30,83,.72), rgba(8,30,83,.12)), url(${imageUrl(slides[slide])})` }}>
-      <div className="hero-content"><p>시민과 함께하는</p><h1>안전한 대전,<br />든든한 대전경찰</h1><button onClick={() => setSlide((slide + 1) % slides.length)} aria-label="다음 슬라이드">→</button></div>
-    </section>
-    <section className="quick-section"><h2>자주 찾는 서비스</h2><div className="quick-grid">{quickServices.map((label, index) => <button key={label}><strong>0{index + 1}</strong>{label}</button>)}</div></section>
+    <section className="hero-layout"><div className="hero-top"><article className="greeting-card"><div><p>대전경찰청장</p><h2>열린청장실</h2><span>항상 열린 마음으로 대전시민의 의견을 귀담아 듣겠습니다.</span></div><img src={imageUrl('img1.png')} alt="대전경찰청장" /></article><div className="related-sites">{Object.entries(relatedSites).map(([label, sites]) => <label key={label}>{label}<select defaultValue=""><option value="" disabled>{label}</option>{sites.map(site => <option key={site}>{site}</option>)}</select></label>)}</div></div><div className="hero-bottom"><section className="hero" style={{ backgroundImage: `linear-gradient(90deg, rgba(8,30,83,.72), rgba(8,30,83,.12)), url(${imageUrl(slides[slide])})` }}><div className="hero-content"><p>시민과 함께하는</p><h1>안전한 대전,<br />든든한 대전경찰</h1><div><button onClick={() => setSlide((slide + slides.length - 1) % slides.length)} aria-label="이전 슬라이드">←</button><button onClick={() => setSlide((slide + 1) % slides.length)} aria-label="다음 슬라이드">→</button></div></div></section><div className="quick-menu-panel">{quickServices.map((label, index) => <button key={label}><strong>0{index + 1}</strong><span>{label}</span></button>)}</div></div></section>
     <section className="content-grid"><article className="notice-card"><div className="notice-tabs" role="tablist">{noticeTabs.map((tab, index) => <button key={tab.label} role="tab" aria-selected={activeTab === index} className={activeTab === index ? 'is-active' : ''} onClick={() => setActiveTab(index)}>{tab.label}</button>)}</div><ul>{noticeTabs[activeTab].items.map(([title, date]) => <li key={title}><span>{title}</span><time>{date}</time></li>)}</ul></article><article className="history-card"><p>DAEJEON POLICE</p><h2>대전경찰 역사관</h2><span>대전경찰의 발자취를 만나보세요.</span><Link to="/history">역사관 둘러보기 →</Link></article></section>
     <section className="quick-links">{quickLinks.map(label => <button key={label}>{label} <span>→</span></button>)}</section>
     <section className="news-section"><div className="section-heading"><h2>대전경찰은 지금</h2><button>더보기 +</button></div><div className="news-grid">{news.map(item => <article key={item.image}><img src={imageUrl(item.image)} alt={item.title} /><h3>{item.title}</h3><p>{item.date}</p></article>)}</div></section>
+    <section className="video-section"><div className="section-heading"><h2>영상 정보</h2></div><div className="video-grid">{videos.map(id => <div key={id}><iframe src={`https://www.youtube.com/embed/${id}`} title="대전경찰 영상" allowFullScreen /></div>)}</div></section>
     <section className="partners" aria-label="관련 기관">{partnerImages.map(image => <img key={image} src={imageUrl(image)} alt="관련 기관" />)}</section>
   </>
 }

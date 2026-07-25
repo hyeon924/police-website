@@ -15,6 +15,12 @@ export const noticeTabs = [
 
 export const quickServices = ['내 사건 검색', '모범경찰 추천', '장기미제 신고', '종합 유실물 신고', '민원서식 다운']
 export const quickLinks = ['안전 DREAM', '순직경찰추모관', '사이버안전국', '수사구조개혁', '여성폭력 상담', '업무추진비현황', '수의계약현황', '대전응답경찰']
+export const relatedSites = {
+  '경찰서 바로가기': ['중부경찰서', '동부경찰서', '서부경찰서', '대덕경찰서', '둔산경찰서', '유성경찰서'],
+  '지방청/부속기관': ['서울경찰청', '부산경찰청', '대구경찰청', '대전경찰청', '경찰대학', '경찰교육원'],
+  '업무관련사이트': ['운전면허시험관리단', '도로교통공단', '경찰병원', '국립과학수사연구원', '경찰대학교'],
+}
+export const videos = ['xxxfeaHDzmw', 'D3E_eue0eDM', 'Utm9WN5bGUY', 'OSKjgjy_Vjk']
 
 export const news = [
   { image: 'new1.jpg', date: '2019.07.03', title: '보이스피싱 사기범 검거에 기여한 은행직원 표창' },
