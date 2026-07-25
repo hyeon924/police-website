@@ -22,19 +22,6 @@
 - CSS
 - GitHub Actions / GitHub Pages
 
-## 실행 방법
-
-```bash
-npm install
-npm run dev
-```
-
-프로덕션 빌드:
-
-```bash
-npm run build
-```
-
 ## 프로젝트 구조
 
 ```text
